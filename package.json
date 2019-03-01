@@ -6,6 +6,7 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "build": "webpack -d --watch",
+    "generate": "node generateData.js",
     "seedMongo": "node database/seedData.mongo.js",
     "test": "jest"
   },
