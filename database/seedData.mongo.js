@@ -1,4 +1,4 @@
-const Product = require('./index.js');
+const Product = require('./index.mongo.js');
 const data = require('../data.json');
 
 const postData = objArr => {

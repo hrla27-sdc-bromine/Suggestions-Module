@@ -1,23 +1,18 @@
-const Product = require('../database/index.js');
+const Product = require("../database/index.mongo.js");
 
 module.exports = {
 	fetch: (req, res) => {
-		const {id} = req.query;
+		const { id } = req.query;
 		if (id) {
-			return Product.find({id: id}, ['tags'], (err, product) => {
-				if (err) {
-					res.status(404).send(err);
-				} else {
-					let itemTags = product[0].tags;
-					return Product.find({ tags: {$in: itemTags } }, (err, products) => {
-						if (err) {
-							res.status(404).send(err);
-						} else {
-							res.status(200).send(products);
-						}
-					});
-				}
-			});
+			Product.find({ id: id }, ['tags'])
+			.then((product) => {
+				let itemTags = product[0].tags;
+				return Product.find({ tags: { $in: itemTags } });
+			})
+			.then((products) => {
+				res.status(200).send(products);
+			})
+			.catch((err) => { console.log('err', err); res.status(404).send(err) });
 		}
 	}
-};
+}
