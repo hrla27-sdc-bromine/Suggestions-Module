@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
 
   //query for fetching 16 products by id
@@ -16,7 +18,7 @@ module.exports = {
   setSequence: "SELECT setval('products_id_seq', (SELECT MAX(id) FROM \"products\"));",
 
   //query to copy the csv to the products table
-  copyCSV: "COPY products FROM '/Users/aqilt/Desktop/Suggestions-Module/dataCSV.csv' DELIMITER ',' CSV HEADER;",
+  copyCSV: `COPY products FROM '${path.resolve(__dirname, './dataCSV.csv')}' DELIMITER ',' CSV HEADER;`,
 
   //make the products table if it exists
   createProductsTable: 'CREATE TABLE IF NOT EXISTS products ( id SERIAL PRIMARY KEY, title VARCHAR, price INTEGER, salePrice INTEGER, reviewStars FLOAT, reviewsTotal INTEGER, productPicture VARCHAR, tagOne VARCHAR, tagTwo VARCHAR, kind VARCHAR, specialTag VARCHAR);',
