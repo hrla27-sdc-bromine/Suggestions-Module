@@ -45,7 +45,7 @@ module.exports.makeApp = async () => {
   app.use(parser.urlencoded({ extended: true }));
   
   app.use(router);
-  app.use(express.static(path.join(__dirname, '../client/dist')));
+  app.use(express.static(path.resolve(__dirname, '../../client/dist')));
   return app;
 };
 
