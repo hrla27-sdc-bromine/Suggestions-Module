@@ -1,6 +1,19 @@
+const chance = require('chance')();
+const _ = require('lodash');
+
+function createRandomWords(limit) {
+  const randomWords = [];
+  for (let i = 0; i < limit; i += 1) {
+    randomWords.push(chance.string({ length: 10, pool: 'qwertyuiopasdfghjklzxcvbnm' }));
+  }
+  return randomWords;
+};
+
 const title = ['Running Shoes', 'AirMax Shoes', 'Edgebounce Shoes', 'Life Shoes', 'Fanny Pack Elite', 'Ultra Boost Shoes', 'Big Bolla Joggas', 'Slav Squat', 'Track Suit TM'];
-const tags = ['footie', 'rugby', 'essentials', 'women', 'men', 'running', 'casual', 'basketball', 'golf', 'jumping'];
 const kinds = ['Original' , 'Essentials', 'Performance'];
+const tags = createRandomWords(2000);
+
+//console.log('title ', title.length, 'tags ', tags.length, 'kinds ', kinds.length);
 
 const randomTitle = () => {
   return title[Math.floor(Math.random() * title.length)];
@@ -18,9 +31,9 @@ const randomPrice = () => {
 };
 
 const salePriceThenSpecialTag = () => {
-  let diceRoll = Math.floor(Math.random() * 6);
+  let diceRoll = chance.d8();
   let isExclusive = diceRoll <= 1 ? 'Exclusive' : null;
-  if (diceRoll > 3) return [null, isExclusive];
+  if (diceRoll < 4) return [null, isExclusive];
   //salePrice is 0 position specialTag is 1
   return [Math.floor(Math.random() * 500) + 1, 'Sale'];
 };

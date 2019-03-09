@@ -10,7 +10,7 @@ class Carousel extends React.Component {
 		this.state = {
 			data: [],
 			// currId: null,
-			currId: Math.ceil(Math.random() * 19),
+			currId: Math.ceil(Math.random() * 1e7),
 			position: 0,
 			direction: 'next',
 			sliding: false
