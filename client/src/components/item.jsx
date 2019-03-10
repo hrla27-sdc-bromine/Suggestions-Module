@@ -27,9 +27,9 @@ class Item extends React.Component {
 			this.setState({ currHeart: this.state.outlinedHeart });
 		}
 	}
-
+ 
 	specialTag() {
-		let { specialTag } = this.props.obj;
+		let specialTag = this.props.obj.specialtag;
 		if (specialTag === 'Sale') {
 			this.setState({ specialTag: <img className={styles.tag} src={this.state.saleTag} /> });
 		} else if (specialTag === 'Exclusive') {
@@ -39,13 +39,13 @@ class Item extends React.Component {
 
 	render() {
 		let price = `$${this.props.obj.price}`;
-		if (this.props.obj.salePrice) {
-			price = <div><span className={styles.red}>${this.props.obj.salePrice}</span> <span className={styles.strikethrough}> ${this.props.obj.price}</span></div>;
+		if (this.props.obj.saleprice) {
+			price = <div><span className={styles.red}>${this.props.obj.saleprice}</span> <span className={styles.strikethrough}> ${this.props.obj.price}</span></div>;
 		}
 
-		let width = `${(this.props.obj.reviewStars / 5) * 100}%`;
+		let width = `${(this.props.obj.reviewstars / 5) * 100}%`;
 		let reviews = <div><div className={styles.starOuter}>&#x02606;&#x02606;&#x02606;&#x02606;&#x02606;<div className={styles.starInner} style={{ width: width }}>&#x02605;&#x02605;&#x02605;&#x02605;&#x02605;</div></div><span className={styles.ratingPad}>{this.props.obj.reviewsTotal}</span></div>;
-		if (!this.props.obj.reviewStars) {
+		if (!this.props.obj.reviewstars) {
 			reviews = null;
 		}
 
@@ -54,7 +54,7 @@ class Item extends React.Component {
 				<div className={styles.item}>
 					<div className={styles.product}>
 						<div id='picture' >
-							<img className={styles.picture} src={this.props.obj.productPicture}></img>
+							<img className={styles.picture} src={this.props.obj.productpicture}></img>
 							{this.state.specialTag}
 							<div className={styles.heartWrapper}>
 								<img className={styles.heart} onClick={this.fillHeart} src={this.state.currHeart}></img>
