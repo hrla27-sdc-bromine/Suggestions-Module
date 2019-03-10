@@ -4,3 +4,4 @@ dataCSV.csv
 .env
 arty.yml
 .DS_Store
+bundle.js
