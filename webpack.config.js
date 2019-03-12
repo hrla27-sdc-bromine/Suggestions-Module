@@ -1,17 +1,17 @@
 var path = require('path');
 var SRC_DIR = path.join(__dirname, '/client/src');
 var DIST_DIR = path.join(__dirname, '/client/dist');
-// var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: `${SRC_DIR}/index.jsx`,
-  devtool: 'inline-source-map',
-  watch: true,
+  //devtool: 'inline-source-map',
+  //devtool: 'source-map',
+  //watch: true,
   output: {
     filename: 'bundle.js',
     path: DIST_DIR
   },
-  mode: "development",
+  //mode: "development",
   module : {
     rules : [
       {

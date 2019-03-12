@@ -7,7 +7,7 @@ const pgPool = new Pool();
 //Export the db connection to be instantiated elsewhere
 module.exports.initializeDbConnection = async () => {
   //Grab and client from the pool
-  let client = await pgPool.connect()
+  let client = await pgPool.connect().catch(err => console.log('err: ', err));
 
   //Queries to create the tables if they dont exist
   await pgPool.query(queries.createProductsTable);
