@@ -1,4 +1,6 @@
+const nr = require('newrelic');
 const { makeApp, app } = require('./app');
+
 
 
 makeApp().then(() => {

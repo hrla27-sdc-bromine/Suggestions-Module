@@ -11,3 +11,5 @@ data.json
 .env
 webpack.config.js
 specs/
+legacygenerateData.js
+README.md
