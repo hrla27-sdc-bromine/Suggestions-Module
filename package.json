@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server/PostgreSQL-Server/index.js",
+    "prod": "node server/PostgreSQL-Server/index.js",
     "build": "webpack -d --watch",
     "test": "jest"
   },

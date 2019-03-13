@@ -4,4 +4,4 @@ COPY package* ./
 RUN npm install --production
 COPY . .
 EXPOSE 3004
-CMD [ "npm", "start" ]
+CMD [ "npm", "run", "prod" ]
