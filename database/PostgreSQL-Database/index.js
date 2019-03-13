@@ -1,14 +1,15 @@
 const { Pool } = require('pg');
+const config = require('./poolConfig');
 const queries = require('./queries');
 
 //create a pool using the env variables from sever/index
-const pgPool = new Pool();
+const pgPool = new Pool(config);
 
 //Export the db connection to be instantiated elsewhere
 module.exports.initializeDbConnection = async () => {
   //Grab and client from the pool
   let client = await pgPool.connect().catch(err => console.log('err: ', err));
-
+  console.log('DB connected on ', config.port);
   //Queries to create the tables if they dont exist
   await pgPool.query(queries.createProductsTable);
 
