@@ -9,7 +9,7 @@ const seedData = async () => {
   console.log('checking db for entries...');
 
   //get the first ten rows to see if populated
-  let { rows } = await pgPool.query(queries.getTen);
+  let { rows } = await pgPool.query(queries.getTen).catch(err => console.log(err));
 
   if (rows.length === 0) {
     console.log('populating db...');
@@ -24,12 +24,13 @@ const seedData = async () => {
     await pgPool.query(queries.setSequence)
 
     //delete the csv file
-    console.log('deleting csv');
-    fs.unlink(path.resolve(__dirname, '../../dataCSV.csv'), (err) => {
-      if (err) console.error(err);
-      console.log('path/file.txt was deleted');
-    });
-    console.log('csv deleted');
+   // console.log('deleting csv');
+    // fs.unlink(path.resolve(__dirname, '../../dataCSV.csv'), (err) => {
+    //   if (err) console.error(err);
+    //   console.log('path/file.txt was deleted');
+    // });
+    // console.log('csv deleted');
+    console.log('done seeding');
     ///Users/aqilt/Desktop/Suggestions-Module/database/PostgreSQL-Database/seedData.js
   } else {
     console.log('db is populated already...');
@@ -38,5 +39,7 @@ const seedData = async () => {
 
   return 1;
 };
+
+seedData();
 
 module.exports = seedData;

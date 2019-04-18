@@ -42,7 +42,8 @@ module.exports.makeApp = async () => {
   app.use(parser.urlencoded({ extended: true }));
   
   app.use(router);
-  app.use(express.static(path.resolve(__dirname, '../../client/dist')));
+  //remove static file serving for nowx
+  //app.use(express.static(path.resolve(__dirname, '../../client/dist')));
 
 };
 

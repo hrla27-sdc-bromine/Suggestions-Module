@@ -8,8 +8,10 @@ __tests__/
 node_modules/
 bigData.json
 data.json
+dataCSV.csv
 .env
 webpack.config.js
 specs/
 legacygenerateData.js
 README.md
+newDataCSV.csv

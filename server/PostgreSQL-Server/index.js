@@ -1,4 +1,4 @@
-const nr = require('newrelic');
+//const nr = require('newrelic');
 const { makeApp, app } = require('./app');
 
 

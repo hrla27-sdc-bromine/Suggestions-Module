@@ -6,3 +6,4 @@ arty.yml
 .DS_Store
 bundle.js
 newrelic.js
+newDataCSV.csv
